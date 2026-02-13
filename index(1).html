@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Camil Golub — Philosophy</title>
+  <meta name="description" content="Camil Golub is an associate professor of philosophy at Rutgers University-Newark, specializing in ethics, metaethics, and moral psychology.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1714;
+      --paper: #f5f2ee;
+      --muted: #8a8278;
+      --accent: #3d2b1f;
+      --line: #d8d2ca;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(245, 242, 238, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 14rem 4rem 7rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 5rem;
+      align-items: end;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .hero-tagline {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-bio {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--accent);
+      max-width: 560px;
+    }
+
+    .hero-bio a {
+      color: var(--ink);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .hero-bio a:hover { color: var(--muted); }
+
+    .hero-links {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .hero-photo {
+      align-self: start;
+      margin-top: 2rem;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      filter: grayscale(20%) contrast(1.05);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── SECTION ── */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+      transition: background 0.15s;
+    }
+
+    .pub-item:first-child { border-top: 1px solid var(--line); }
+
+    .pub-year {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding-top: 0.25rem;
+      letter-spacing: 0.05em;
+    }
+
+    .pub-content {}
+
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .pub-title:hover { color: var(--muted); }
+
+    a.pub-title { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+    .pub-journal {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── IN PROGRESS ── */
+    .progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .progress-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .progress-item::before {
+      content: '○';
+      font-style: normal;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 3rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-email {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-email:hover { color: var(--ink); }
+
+    .footer-note {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--line);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-text h1   { animation: fadeUp 0.9s ease both; }
+    .hero-tagline   { animation: fadeUp 0.9s 0.15s ease both; }
+    .hero-bio       { animation: fadeUp 0.9s 0.25s ease both; }
+    .hero-links     { animation: fadeUp 0.9s 0.35s ease both; }
+    .hero-photo     { animation: fadeUp 0.9s 0.2s ease both; }
+
+    /* ── ABSTRACT TOGGLE ── */
+    .abstract-toggle {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem 0 0 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .abstract-toggle:hover {
+      color: var(--ink);
+    }
+
+    .abstract-toggle::after {
+      content: ' ↓';
+      font-size: 0.6rem;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .abstract-toggle.active::after {
+      transform: rotate(180deg);
+    }
+
+    .pub-abstract {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, margin-top 0.3s ease;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--accent);
+    }
+
+    .pub-abstract.active {
+      max-height: 1000px;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .nav-links a { font-size: 0.68rem; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 10rem 1.5rem 4rem;
+        gap: 3rem;
+      }
+
+      .hero-photo { order: -1; max-width: 220px; margin: 0 auto; }
+
+      section { padding: 3.5rem 1.5rem; }
+      .section-divider { padding: 0 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+
+      .pub-item { grid-template-columns: 60px 1fr; gap: 1rem; }
+    }
+  </style>
+  
+  <script>
+    // Abstract toggle functionality
+    function toggleAbstract(button) {
+      const abstract = button.nextElementSibling;
+      const isActive = abstract.classList.contains('active');
+      
+      // Close all other abstracts
+      document.querySelectorAll('.pub-abstract').forEach(abs => {
+        abs.classList.remove('active');
+      });
+      document.querySelectorAll('.abstract-toggle').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Toggle current abstract
+      if (!isActive) {
+        abstract.classList.add('active');
+        button.classList.add('active');
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-name" href="/">Camil Golub</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#progress">In Progress</a></li>
+      <li><a href="https://drive.google.com/file/d/1_zUPjomWBHgt6qvxQ_GcHqHblp91McTh/view" target="_blank">CV</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-tagline">Associate Professor of Philosophy · Rutgers University–Newark</p>
+      <h1>Camil<br><em>Golub</em></h1>
+      <p class="hero-bio">
+        I am an associate professor of philosophy at <a href="https://www.ncas.rutgers.edu/philosophy" target="_blank">Rutgers University-Newark</a>, and an associate member of the graduate faculty in the philosophy department at <a href="https://philosophy.rutgers.edu/" target="_blank">Rutgers University-New Brunswick</a>. I work primarily in ethics, metaethics, and moral psychology. I am particularly interested in questions about normative realism, expressivism about normative discourse, meaning in life, love, and the ethics of imperfection.
+        <br><br>
+        After joining Rutgers in 2017, I also spent two years as a Marie Skłodowska-Curie fellow at the <a href="https://ahc.leeds.ac.uk/philosophy" target="_blank">University of Leeds</a> (2019-2021). I completed my PhD at <a href="http://as.nyu.edu/content/nyu-as/as/departments/philosophy.html" target="_blank">New York University</a> in 2017, and before that, I studied philosophy at the <a href="http://filosofie.unibuc.ro/" target="_blank">University of Bucharest</a>. I was born and raised in <a href="http://romaniatourism.com/braila.html" target="_blank">Brăila</a>, a small city in eastern Romania.
+        <br><br>
+        You can email me at <a href="mailto:camil.golub@rutgers.edu">camil.golub@rutgers.edu</a>. You can also find me on <a href="https://philpeople.org/profiles/camil-golub" target="_blank">PhilPeople</a>.
+      </p>
+      <div class="hero-links">
+        <a href="https://drive.google.com/file/d/1_zUPjomWBHgt6qvxQ_GcHqHblp91McTh/view" target="_blank" class="btn">Curriculum Vitae</a>
+        <a href="https://philpeople.org/profiles/camil-golub" target="_blank" class="btn btn-ghost">PhilPeople Profile</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.squarespace-cdn.com/content/v1/56a2a19140667a84af39d932/b1c82941-4cc6-437b-8845-26793d449145/DSC09774%7E2.png" alt="Camil Golub" />
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- PUBLICATIONS -->
+  <section id="research">
+    <div class="section-label">Publications</div>
+    <div class="pub-list">
+
+      <div class="pub-item">
+        <span class="pub-year">Forthcoming</span>
+        <div class="pub-content">
+          <span class="pub-title">Epistemological challenges to normative realism: a soft naturalist response</span>
+          <div class="pub-journal">In C. Brîncuș (ed.), From an Analytical Point of View: Essays in Honor of Mircea Dumitru</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2025</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/rati.70000" target="_blank">Grief, meaning, and narratives</a>
+          <div class="pub-journal">Ratio, 38</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here. Replace this placeholder with the actual abstract from your paper about grief, meaning, and narratives.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2025</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://philpapers.org/archive/GOLNRA.pdf" target="_blank">Normative reference as a normative question</a>
+          <div class="pub-journal">Erkenntnis, 90</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here. Replace this placeholder with the actual abstract from your paper.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2022</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://philpapers.org/archive/GOLQAT.pdf" target="_blank">Quasi-naturalism and the problem of alternative normative concepts</a>
+          <div class="pub-journal">Journal of Moral Philosophy, 19 (5)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2021</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://philpapers.org/archive/GOLRDA-2.pdf" target="_blank">Representation, deflationism, and the question of realism</a>
+          <div class="pub-journal">Ergo, 7 (1)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2021</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://drive.google.com/file/d/1RQNTyxvhLHUCwKem6sh3Q_XSS5AZazyu/view" target="_blank">Is there a good moral argument against moral realism?</a>
+          <div class="pub-journal">Ethical Theory and Moral Practice, 24 (1)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2019</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://drive.google.com/file/d/1pn_yenH_CkXf_MBoiJuZEdyRo1yU0Tsu/view" target="_blank">Making peace with moral imperfection</a>
+          <div class="pub-journal">Journal of Ethics and Social Philosophy, 16 (2)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2019</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://drive.google.com/open?id=1vGmYdmUXVeQuk-wCKqxV2c1gYBX-G3rl" target="_blank">Reid on moral sentimentalism</a>
+          <div class="pub-journal">Res Philosophica, 96 (4)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2019</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://drive.google.com/open?id=19QnrxVq7qnSq0RO-oUk1yaFR-spxarZt" target="_blank">Personal value, biographical identity, and retrospective attitudes</a>
+          <div class="pub-journal">Australasian Journal of Philosophy, 97 (1)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2018</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://drive.google.com/file/d/1QqBypX_4AfAs2YANLiHA8q4THzuBZvV1/view" target="_blank">Review of Passions and Projections (Johnson & Smith, eds.)</a>
+          <div class="pub-journal">Journal of Moral Philosophy, 15 (5)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2017</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://drive.google.com/open?id=1bomiShvbpYN7t324yNqCRqsDYVmTwU19" target="_blank">Expressivism and the reliability challenge</a>
+          <div class="pub-journal">Ethical Theory and Moral Practice, 20 (4)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-year">2017</span>
+        <div class="pub-content">
+          <a class="pub-title" href="https://drive.google.com/open?id=1HezWHr5qbyvE2ItlSzPn3PR95in3g5mA" target="_blank">Expressivism and realist explanations</a>
+          <div class="pub-journal">Philosophical Studies, 174 (6)</div>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <div class="pub-abstract">
+            [Add your abstract text here.]
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- IN PROGRESS -->
+  <section id="progress">
+    <div class="section-label">Work in Progress</div>
+    <div class="progress-list">
+      <div class="progress-item">A paper on the relation between meaning in life and value</div>
+      <div class="progress-item">A paper on love as a practice</div>
+      <div class="progress-item">A paper on nostalgia as a source of meaning in life</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-email" href="mailto:camil.golub@rutgers.edu">camil.golub@rutgers.edu</a>
+    <span class="footer-note">© 2026 Camil Golub</span>
+  </footer>
+
+</body>
+</html>
