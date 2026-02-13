@@ -253,6 +253,58 @@
       letter-spacing: 0.05em;
     }
 
+    .pub-abstract-toggle {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem 0 0 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+      margin-top: 0.3rem;
+    }
+
+    .pub-abstract-toggle:hover {
+      color: var(--ink);
+    }
+
+    .pub-abstract-toggle::after {
+      content: ' ▼';
+      font-size: 0.5rem;
+      margin-left: 0.3rem;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    .pub-abstract-toggle.active::after {
+      transform: rotate(180deg);
+    }
+
+    .pub-abstract {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .pub-abstract.active {
+      max-height: 800px;
+    }
+
+    .pub-abstract-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--accent);
+      padding: 1rem;
+      background: rgba(216, 210, 202, 0.15);
+      border-left: 2px solid var(--line);
+      margin-top: 0.8rem;
+    }
+
     /* ── IN PROGRESS ── */
     .progress-list {
       display: flex;
@@ -319,53 +371,6 @@
     .hero-links     { animation: fadeUp 0.9s 0.35s ease both; }
     .hero-photo     { animation: fadeUp 0.9s 0.2s ease both; }
 
-    /* ── ABSTRACT TOGGLE ── */
-    .abstract-toggle {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem 0 0 0;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      transition: color 0.2s;
-    }
-
-    .abstract-toggle:hover {
-      color: var(--ink);
-    }
-
-    .abstract-toggle::after {
-      content: ' ↓';
-      font-size: 0.6rem;
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-
-    .abstract-toggle.active::after {
-      transform: rotate(180deg);
-    }
-
-    .pub-abstract {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, margin-top 0.3s ease;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: var(--accent);
-    }
-
-    .pub-abstract.active {
-      max-height: 1000px;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--line);
-    }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 1.2rem 1.5rem; }
@@ -387,28 +392,6 @@
       .pub-item { grid-template-columns: 60px 1fr; gap: 1rem; }
     }
   </style>
-  
-  <script>
-    // Abstract toggle functionality
-    function toggleAbstract(button) {
-      const abstract = button.nextElementSibling;
-      const isActive = abstract.classList.contains('active');
-      
-      // Close all other abstracts
-      document.querySelectorAll('.pub-abstract').forEach(abs => {
-        abs.classList.remove('active');
-      });
-      document.querySelectorAll('.abstract-toggle').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      
-      // Toggle current abstract
-      if (!isActive) {
-        abstract.classList.add('active');
-        button.classList.add('active');
-      }
-    }
-  </script>
 </head>
 <body>
 
@@ -456,9 +439,11 @@
         <div class="pub-content">
           <span class="pub-title">Epistemological challenges to normative realism: a soft naturalist response</span>
           <div class="pub-journal">In C. Brîncuș (ed.), From an Analytical Point of View: Essays in Honor of Mircea Dumitru</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              Two of the most pressing epistemological challenges to normative realism are the evolutionary debunking argument developed by Street (2006) and others, and the demand to explain the reliability of our normative beliefs. A standard response to these challenges on behalf of non-naturalist realism claims that evolution has endowed us with normative attitudes that happen to align with objective normative truths. However, this response arguably begs the question against the evolutionary debunker, and fails to properly explain our reliability. Naturalist realists might propose a deep Darwinian vindication of our normative beliefs, according to which our normative attitudes were selected because they tracked normative facts. This hard naturalist response is not question-begging and fully explains our reliability, but it runs into a different problem, because it identifies normative properties with natural properties that play a central role in the evolutionary explanation of normative thought: either this account has objectionable normative consequences, or it proposes an implausible picture of the range of evolutionary paths for our species. In this paper I argue that soft naturalism, i.e. a view that adopts a naturalist metaphysics of normativity but rejects a deep Darwinian vindication of normative thought, can successfully address the two epistemological challenges while avoiding the pitfalls of hard naturalism.
+            </div>
           </div>
         </div>
       </div>
@@ -468,9 +453,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/rati.70000" target="_blank">Grief, meaning, and narratives</a>
           <div class="pub-journal">Ratio, 38</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here. Replace this placeholder with the actual abstract from your paper about grief, meaning, and narratives.]
+            <div class="pub-abstract-text">
+              Grief after the loss of a loved one often involves profound experiences of meaninglessness rooted in the absence of the deceased. Yet many people recover from this crisis of meaning fairly quickly. Can we explain this return to a meaningful life in a way that does not reveal anything problematic about our rationality, or about the significance of our relationship to the person who died? I propose that we can find meaning in the loss of a loved one by understanding how that loss has shaped who we are, or how it fits into a broader story about the world—even without attributing substantive value to the loss itself or its consequences in our lives. Thus, making sense of a loss through narratives can rationally support the recovery of meaningfulness in grief even if the evaluative facts about that loss remain the same, and without any troubling consequences regarding our relationship to the deceased.
+            </div>
           </div>
         </div>
       </div>
@@ -480,9 +467,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://philpapers.org/archive/GOLNRA.pdf" target="_blank">Normative reference as a normative question</a>
           <div class="pub-journal">Erkenntnis, 90</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here. Replace this placeholder with the actual abstract from your paper.]
+            <div class="pub-abstract-text">
+              Normative naturalism holds that normative properties are identical with, or reducible to, natural properties. Various challenges to naturalism focus on whether it can make good on the idea that normative concepts can be used in systematically different ways and yet have the same reference in all contexts of use. In response to such challenges, some naturalists have proposed that questions about the reference of normative terms should be understood, at least in part, as normative questions that can be settled through normative inquiry. In this paper I have two goals. First, I argue that these naturalist proposals do not yet allow for radical disagreement on normative matters, or at least do not explain how such disagreement is possible. Secondly, I argue that, in order to account for radical disagreement, naturalists should not only treat normative reference as a normative issue but also adopt a non-representationalist account of normative concepts, on which such concepts are individuated through their practical role. I illustrate this point by showing how a view that combines naturalism and expressivism about normative discourse can vindicate the elasticity of normative concepts, their referential stability, and the objectivity of normative truths.
+            </div>
           </div>
         </div>
       </div>
@@ -492,9 +481,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://philpapers.org/archive/GOLQAT.pdf" target="_blank">Quasi-naturalism and the problem of alternative normative concepts</a>
           <div class="pub-journal">Journal of Moral Philosophy, 19 (5)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              The following scenario seems possible: a community uses concepts that play the same role in guiding actions and shaping social life as our normative concepts, and yet refer to something else. As Eklund (2017) argues, this apparent possibility poses a problem for any normative realist who aspires to vindicate the thought that reality itself favors our ways of valuing and acting. How can realists make good on this idea, given that anything they might say in support of the privileged status of our normative concepts can be mirrored by the imagined community? E.g., the realist might claim that using our concepts is what we <em>ought to do</em> if we are to describe normative facts correctly, but members of the other community can claim the same about their concepts, using their own concept of <em>ought</em>. A promising approach to this challenge is to try to rule out the possibility of alternative normative concepts, by arguing that any concepts that have the same normative role must share a reference as well. (Eklund calls this <em>referential normativity</em>.) In this paper I argue that normative quasi-naturalism, a view that combines expressivism about normative discourse with a naturalist metaphysics of normativity, supports referential normativity and solves the problem of alternative normative concepts.
+            </div>
           </div>
         </div>
       </div>
@@ -504,9 +495,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://philpapers.org/archive/GOLRDA-2.pdf" target="_blank">Representation, deflationism, and the question of realism</a>
           <div class="pub-journal">Ergo, 7 (1)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              How can we distinguish between quasi-realist expressivism and normative realism? The most promising answer to this question is the "explanation" explanation proposed by Dreier (2004), Simpson (2018), and others: the two views might agree in their claims about truth and objectivity, or even in their attributions of semantic content to normative sentences, but they disagree about how to explain normative meaning. Realists explain meaning by invoking normative facts and properties, or representational relations between normative language and the world, the thought goes, while expressivists appeal instead to desire-like mental states in their explanations of meaning. However, I argue that, if we adopt a deflationary approach to representation and other related notions, there need be no such explanatory divide between expressivism and anything recognizable as a plausible notion of normative realism. Any alleged explanatory criterion for realism will either be incompatible with deflationism, or it will fail to capture some standard versions of normative realism. I conclude that, in a deflationary framework, expressivism is compatible with genuine realism.
+            </div>
           </div>
         </div>
       </div>
@@ -516,9 +509,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://drive.google.com/file/d/1RQNTyxvhLHUCwKem6sh3Q_XSS5AZazyu/view" target="_blank">Is there a good moral argument against moral realism?</a>
           <div class="pub-journal">Ethical Theory and Moral Practice, 24 (1)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              It has been argued that there is something morally objectionable about moral realism: for instance, according to realism, we are justified in believing that genocide is wrong only if a certain moral fact obtains, but it is objectionable to hold our moral commitments hostage to metaphysics in this way. In this paper, I argue that no version of this moral argument against realism is likely to succeed. More precisely, minimal realism―the kind of realism on which realist theses are understood as internal to moral discourse―is immune to this challenge, contrary to what some proponents of the moral argument have suggested, while robust non-naturalist realists might have good answers to all versions of the argument as well, at least if they adopt a certain stance on how to form metaphysical beliefs in the moral domain.
+            </div>
           </div>
         </div>
       </div>
@@ -528,9 +523,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://drive.google.com/file/d/1pn_yenH_CkXf_MBoiJuZEdyRo1yU0Tsu/view" target="_blank">Making peace with moral imperfection</a>
           <div class="pub-journal">Journal of Ethics and Social Philosophy, 16 (2)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              It seems reasonable to make peace with some of our moral failings while resolving to avoid similar mistakes in the future. But how can it be so? This is the problem of temporal asymmetry for our attitudes toward moral imperfection. I argue that certain intuitively plausible responses—e.g., that we cannot do anything about the past while the future is still open, or that we learn from our mistakes—do not properly solve the puzzle. I defend an alternative response, centered on the significance of our personal attachments and our biographical identity.
+            </div>
           </div>
         </div>
       </div>
@@ -540,9 +537,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://drive.google.com/open?id=1vGmYdmUXVeQuk-wCKqxV2c1gYBX-G3rl" target="_blank">Reid on moral sentimentalism</a>
           <div class="pub-journal">Res Philosophica, 96 (4)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              In the <em>Essays on the Active Powers of Man</em> V. 7, Thomas Reid seeks to show "[t]hat moral approbation implies a real judgment," contrasting this thesis with the view that moral approbation is no more than a feeling. Unfortunately, his criticism of moral sentimentalism systematically conflates two different metaethical views: non-cognitivism about moral thought and subjectivism about moral properties. However, if we properly disentangle the various parts of Reid's discussion, we can isolate pertinent arguments against each of these views. Some of these arguments, such as the argument from disagreement and the argument from implausible counterfactuals against subjectivism, or the transparency argument against non-cognitivism, still have important roles to play in contemporary metaethics.
+            </div>
           </div>
         </div>
       </div>
@@ -552,9 +551,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://drive.google.com/open?id=19QnrxVq7qnSq0RO-oUk1yaFR-spxarZt" target="_blank">Personal value, biographical identity, and retrospective attitudes</a>
           <div class="pub-journal">Australasian Journal of Philosophy, 97 (1)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              We all could have had better lives, yet often do not wish that our lives had gone differently, especially when we contemplate alternatives that vastly diverge from our actual life course. What, if anything, accounts for such conservative retrospective attitudes? I argue that the right answer involves the significance of our personal attachments and our biographical identity. I also examine other options, such as the absence of self-to-self connections across possible worlds and a general conservatism about value.
+            </div>
           </div>
         </div>
       </div>
@@ -564,10 +565,6 @@
         <div class="pub-content">
           <a class="pub-title" href="https://drive.google.com/file/d/1QqBypX_4AfAs2YANLiHA8q4THzuBZvV1/view" target="_blank">Review of Passions and Projections (Johnson & Smith, eds.)</a>
           <div class="pub-journal">Journal of Moral Philosophy, 15 (5)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
-          <div class="pub-abstract">
-            [Add your abstract text here.]
-          </div>
         </div>
       </div>
 
@@ -576,9 +573,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://drive.google.com/open?id=1bomiShvbpYN7t324yNqCRqsDYVmTwU19" target="_blank">Expressivism and the reliability challenge</a>
           <div class="pub-journal">Ethical Theory and Moral Practice, 20 (4)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              Suppose that there are objective normative facts and our beliefs about such facts are by-and-large true. How did this come to happen? This is the reliability challenge to normative realism. As has been recently noted, the challenge also applies to expressivist "quasi-realism". I argue that expressivism is useful in the face of this challenge, in a way that has not been yet properly articulated. In dealing with epistemological issues, quasi-realists typically invoke the desire-like nature of normative judgments. However, this is not enough to prevent the reliability challenge from arising, given that quasi-realists also hold that normative judgments are truth-apt beliefs. To defuse this challenge, we need to isolate a deeper sense in which normative thought is not representational. I propose that we rely on the negative functional thesis of expressivism: normative thought does not have the function of tracking normative facts, or any other kind of facts. This thesis supports an argument to the effect that it is misguided to expect an explanation of our access to normative facts akin to the explanations available in regions of thought that have a tracking function. We should be content with explanations of our reliability that take for granted certain connections between our psychology and the normative truths.
+            </div>
           </div>
         </div>
       </div>
@@ -588,9 +587,11 @@
         <div class="pub-content">
           <a class="pub-title" href="https://drive.google.com/open?id=1HezWHr5qbyvE2ItlSzPn3PR95in3g5mA" target="_blank">Expressivism and realist explanations</a>
           <div class="pub-journal">Philosophical Studies, 174 (6)</div>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+          <button class="pub-abstract-toggle">Abstract</button>
           <div class="pub-abstract">
-            [Add your abstract text here.]
+            <div class="pub-abstract-text">
+              It is often claimed that there is an explanatory divide between an expressivist account of normative discourse and a realist conception of normativity: more precisely, that expressivism and realism offer conflicting explanations of (1) the metaphysical structure of the normative realm, (2) the connection between normative judgment and motivation, (3) our normative beliefs and any convergence thereof, or (4) the content of normative thoughts and claims. In this paper I argue that there need be no such explanatory conflict. Given a minimalist approach to the relevant metaphysical and semantic notions, expressivism is compatible with any explanation that would be acceptable as a general criterion for realism.
+            </div>
           </div>
         </div>
       </div>
@@ -615,6 +616,32 @@
     <a class="footer-email" href="mailto:camil.golub@rutgers.edu">camil.golub@rutgers.edu</a>
     <span class="footer-note">© 2026 Camil Golub</span>
   </footer>
+
+  <script>
+    // Abstract toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.pub-abstract-toggle').forEach(button => {
+        button.addEventListener('click', function() {
+          const abstract = this.nextElementSibling;
+          const isActive = abstract.classList.contains('active');
+          
+          // Close all other abstracts
+          document.querySelectorAll('.pub-abstract').forEach(abs => {
+            abs.classList.remove('active');
+          });
+          document.querySelectorAll('.pub-abstract-toggle').forEach(btn => {
+            btn.classList.remove('active');
+          });
+          
+          // Toggle current abstract
+          if (!isActive) {
+            abstract.classList.add('active');
+            this.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
